@@ -1,6 +1,6 @@
 # About
 
-Any given Xenon cluster can be brough to its knees by destorying its one and only solar power plant.
+Any given Xenon cluster can be brought to its knees by destroying its one and only solar power plant.
 
 In new and existing games this mod adds to Xenon shipyards and wharfs solar power plants. This way each Xenon cluster will have multiple sources of energy cells for their supply lines.
 
@@ -16,7 +16,7 @@ In new and existing games this mod adds to Xenon shipyards and wharfs solar powe
 
 [Egosoft Forum]()
 
-[Steam Workshop]()
+[Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=1907800675)
 
 [Github](https://github.com/rovermicrover/x4-improved-xenon-supply-lines)
 
