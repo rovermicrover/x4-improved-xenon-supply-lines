@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="XenonDurability" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
+    <cues>
+        <cue name="NewGameDisabledEnsureSolarPowerPlants" namespace="this">
+            <conditions>
+                <event_game_started />
+            </conditions>
+            <actions>
+                <cancel_cue cue="EnsureSolarPowerPlants" />
+            </actions>
+        </cue>
+        <cue name="EnsureSolarPowerPlants" namespace="this">
+            <conditions>
+                <event_game_loaded />
+            </conditions>
+            <actions>
+                <find_station_by_true_owner name="$Stations" faction="faction.xenon" space="player.galaxy" checkoperational="false" canbuildships="true" multiple="true"/>
+                <do_all exact="$Stations.count" counter="$station_i">
+                    <set_value name="$Station" exact="$Stations.{$station_i}" />
+
+                    <set_value name="$EnergyProduction" exact="0"/>
+
+                    <do_if value="$Station.products.{ware.energycells}.exists">
+                        <set_value name="$EnergyProduction" exact="1"/>
+                    </do_if>
+
+                    <do_if value="$EnergyProduction == 0">
+                        <create_construction_sequence station="$Station" base="$Station.plannedconstruction.sequence" macros="[macro.xenon_small_station_01_solarpanel_01_macro]">
+                            <immediate result="$ConstructionSequence"/>
+                        </create_construction_sequence>
+                        <add_build_to_expand_station buildobject="$Station" object="$Station.buildstorage" constructionplan="$ConstructionSequence"/>
+                    </do_if>
+                </do_all>
+            </actions>
+        </cue>
+    </cues>
+</mdscript>
